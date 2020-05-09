@@ -30,9 +30,20 @@ $Form.controls.AddRange(@($Button1,$output_lbl))
 
 $Button1.Add_Click({ get-prompt })
 
-function get-prompt { }
+function get-prompt { 
+    $title = 'Demographics'
+    $msg   = 'Enter your demographics:'
+
+    $text = [Microsoft.VisualBasic.Interaction]::InputBox($msg, $title)
+
+    $output_lbl.Text = $text
+}
 
 
 #Write your logic code here
+
+[void][Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic')
+
+
 
 [void]$Form.ShowDialog()
